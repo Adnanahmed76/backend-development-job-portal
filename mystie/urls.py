@@ -17,9 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from invoices.views import show_invoice
+from invoices.views import show_invoices
+from invoices.views import homepage
 #path('address/',view_function,name="nickname")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('invoice/',show_invoice,name='invoice')
+    path('invoice/',show_invoice,name='invoice'),
+    path('invoices/',show_invoices,name="invoices"),
+    path('home/',homepage,name="home")
 ]

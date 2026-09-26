@@ -1,0 +1,21 @@
+step-1
+create a box
+python -m venv venv
+
+step-2
+inside a box
+
+.\venv\Scripts\activate
+
+step 3
+install django
+
+step 4
+verification
+
+
+---------------------------------------------
+startproject
+django-admin
+startproject->new project building
+
