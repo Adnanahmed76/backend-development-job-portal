@@ -8,10 +8,16 @@ def show_invoice(request):
 
 def show_invoices(request):
     data = {
-        'customer_name': 'Rahul',
-        'invoice_total': 1000
+        'all_invoices':[
+{"number":1,'customer':'Adnan','amount':9000},
+{"number":1,'customer':'Adnan','amount':5000},
+{"number":1,'customer':'Adnan','amount':5000}
+
+
+        ]
+        
     }
-    return JsonResponse(data)
+    return render(request,'bill.html',data)
 
 def homepage(request):
     data={

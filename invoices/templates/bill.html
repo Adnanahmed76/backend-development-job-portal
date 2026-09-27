@@ -9,11 +9,22 @@
 
     <h1>Invoice Details</h1>
 
-    <h2>Customer Name: {{ customer_name }}</h2>
+    {% for invoice in all_invoices %}
 
-    <h2>Invoice Total: ₹{{ invoice_total }}</h2>
+    <p>
+        Invoice {{ invoice.number }} -
+        {{ invoice.customer }} -
+        {{ invoice.amount }}
+    </p>
+
+    {% if invoice.amount > 7000 %}
+    <p>This is a large invoice</p>
+    {% else %}
+    <p>This is a regular invoice</p>
+    {% endif %}
+
+    {% endfor %}
 
 </body>
 
 </html>
-```
