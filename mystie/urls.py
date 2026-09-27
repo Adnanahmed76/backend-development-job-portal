@@ -16,18 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from invoices.views import show_invoice
-from invoices.views import show_invoices
-from invoices.views import homepage
-from invoices.views import show_one_invoice
-from invoices.views import create_invoice
+from invoices.views import (
+    homepage,
+    show_invoices,
+    show_unpaid_invoices,
+    show_invoice,
+    create_invoice,
+    invoice_detail,
+)
+
 #path('address/',view_function,name="nickname")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',homepage,name='home'),
+    path('invoices/',show_invoices,name='invoices'),
     path('invoice/',show_invoice,name='invoice'),
-    path('invoices/',show_invoices,name="invoices"),
-    path('home/',homepage,name="home"),
-    path('details/',show_one_invoice,name='invoicedetails'),
-    path('create/', create_invoice, name='create_invoice'),
+     path('create/', create_invoice, name='create_invoice'),
+   
 ]

@@ -1,29 +1,125 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
-    <title>Invoice</title>
+
+    <title>Invoices</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .invoice-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .invoice-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .invoice-card h2 {
+            margin-bottom: 15px;
+        }
+
+        .invoice-card p {
+            margin: 8px 0;
+            color: #555;
+        }
+
+        .paid {
+            color: green;
+            font-weight: bold;
+        }
+
+        .unpaid {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <h1>Invoice Details</h1>
+    <h1>
+        📄 All Invoices
+    </h1>
 
-    {% for invoice in all_invoices %}
 
-    <p>
-        Invoice {{ invoice.number }} -
-        {{ invoice.customer }} -
-        {{ invoice.amount }}
-    </p>
+    <div class="invoice-container">
 
-    {% if invoice.amount > 7000 %}
-    <p>This is a large invoice</p>
-    {% else %}
-    <p>This is a regular invoice</p>
-    {% endif %}
+        {% for invoice in all_invoices %}
 
-    {% endfor %}
+        <div class="invoice-card">
+
+            <h2>
+                {{ invoice.invoice_number }}
+            </h2>
+
+            <p>
+                <strong>Customer:</strong>
+                {{ invoice.customer_name }}
+            </p>
+
+            <p>
+                <strong>Amount:</strong>
+                ₹{{ invoice.amount }}
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                {{ invoice.date_created }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+
+                {% if invoice.is_paid %}
+
+                <span class="paid">
+                    Paid
+                </span>
+
+                {% else %}
+
+                <span class="unpaid">
+                    Not Paid
+                </span>
+
+                {% endif %}
+
+            </p>
+
+            <p>
+                <strong>Notes:</strong>
+                {{ invoice.notes }}
+            </p>
+
+        </div>
+
+        {% empty %}
+
+        <p>
+            No invoices available.
+        </p>
+
+        {% endfor %}
+
+    </div>
 
 </body>
 
