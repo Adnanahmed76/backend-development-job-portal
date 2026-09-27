@@ -19,11 +19,15 @@ from django.urls import path
 from invoices.views import show_invoice
 from invoices.views import show_invoices
 from invoices.views import homepage
+from invoices.views import show_one_invoice
+from invoices.views import create_invoice
 #path('address/',view_function,name="nickname")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('invoice/',show_invoice,name='invoice'),
     path('invoices/',show_invoices,name="invoices"),
-    path('home/',homepage,name="home")
+    path('home/',homepage,name="home"),
+    path('details/',show_one_invoice,name='invoicedetails'),
+    path('create/', create_invoice, name='create_invoice'),
 ]

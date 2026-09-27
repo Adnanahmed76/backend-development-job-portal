@@ -1,0 +1,58 @@
+```html
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Invoice Details</title>
+
+    <link rel="stylesheet" href="{% static 'css/invoice_details.css' %}">
+</head>
+
+<body>
+
+    <div class="invoice-container">
+
+        <h1>Invoice Details</h1>
+
+        <div class="invoice-card">
+
+            <div class="invoice-row">
+                <strong>Customer Name</strong>
+                <span>{{ invoice.customer_name }}</span>
+            </div>
+
+            <div class="invoice-row">
+                <strong>Invoice Number</strong>
+                <span>{{ invoice.invoice_number }}</span>
+            </div>
+
+            <div class="invoice-row">
+                <strong>Amount</strong>
+                <span>₹{{ invoice.amount }}</span>
+            </div>
+
+            <div class="invoice-row">
+                <strong>Date Created</strong>
+                <span>{{ invoice.date_created }}</span>
+            </div>
+
+            <div class="invoice-row">
+                <strong>Paid</strong>
+
+                {% if invoice.is_paid %}
+                <span class="paid">Paid</span>
+                {% else %}
+                <span class="unpaid">Not Paid</span>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+```
