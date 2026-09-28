@@ -23,6 +23,7 @@ from invoices.views import (
     show_invoice,
     create_invoice,
     invoice_detail,
+    add_invoice
 )
 
 #path('address/',view_function,name="nickname")
@@ -33,5 +34,6 @@ urlpatterns = [
     path('invoices/',show_invoices,name='invoices'),
     path('invoice/',show_invoice,name='invoice'),
      path('create/', create_invoice, name='create_invoice'),
+     path('invoice/add/',add_invoice,name='add-invoice')
    
 ]
