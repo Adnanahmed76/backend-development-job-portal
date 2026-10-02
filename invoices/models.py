@@ -9,6 +9,7 @@ class Invoice(models.Model):
     date_created=models.DateField(auto_now_add=True)
     is_paid=models.BooleanField(default=False)
     notes=models.TextField(blank=True)
+    name=models.CharField(max_length=100, blank=True, null=True)
 
 
     def __str__(self):
