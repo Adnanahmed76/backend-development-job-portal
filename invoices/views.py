@@ -125,3 +125,35 @@ def invoice_detail(request, invoice_id):
         return JsonResponse({
             'message': 'Invoice not found'
         }, status=404)
+
+def update_invoice(request, invoice_id):
+
+    try:
+        invoice = Invoice.objects.get(id=invoice_id)
+
+        if request.method == 'POST':
+            data = json.loads(request.body)
+
+            invoice.customer_name = data.get('customer_name', invoice.customer_name)
+            invoice.invoice_number = data.get('invoice_number', invoice.invoice_number)
+            invoice.amount = data.get('amount', invoice.amount)
+            invoice.is_paid = data.get('is_paid', invoice.is_paid)
+            invoice.notes = data.get('notes', invoice.notes)
+
+            invoice.save()
+
+            return JsonResponse({
+                'message': 'Invoice updated successfully',
+                'id': invoice.id,
+                'invoice_number': invoice.invoice_number
+            })
+
+        return JsonResponse({
+            'message': 'Only POST request is allowed'
+        })
+
+    except Invoice.DoesNotExist:
+
+        return JsonResponse({
+            'message': 'Invoice not found'
+        }, status=404)
